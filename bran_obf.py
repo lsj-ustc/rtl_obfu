@@ -97,33 +97,6 @@ def main(args):
                 kc, k, index = bran_obfu(ifstatement.cond, k, index)
                 ifstatement.cond = kc
 
-            # if isinstance(non.right.var, vast.IntConst):
-            #     # intc = vast.IntConst('3')
-            #     constvalue = non.right.var.value
-            #     kc, k, index = const_obfu(constvalue, non, k, index)
-            #     non.right = vast.Rvalue(kc, lineno=non.lineno)
-
-            # if isinstance(non.right.var, vast.Plus) | isinstance(non.right.var, vast.Minus) | isinstance(non.right.var, vast.Divide):
-            #     var1 = non.right.var
-            #     if isinstance(var1.left, vast.IntConst):
-            #         constvalue = var1.left.value
-            #         kc, k, index = const_obfu(constvalue, non, k, index)
-            #         var1.left = kc
-            #     if isinstance(var1.right, vast.IntConst):
-            #         constvalue = var1.right.value
-            #         kc, k, index = const_obfu(constvalue, non, k, index)
-            #         var1.right = kc
-
-    # portlist = find_graph_node(full_ast, vast.Portlist)
-
-    # for pl in portlist:
-    #     plist = list(pl.ports)
-    #     k_width = vast.Width(msb=vast.IntConst(0),lsb=vast.IntConst(index - 1))
-    #     plist.append(vast.Ioport(first=vast.Input(name="k", width=k_width)))
-    #     pl.ports = tuple(plist)
-    #     # pl.show()
-
-    # full_ast.show()
     with open('bran_code.v', 'w+') as f:
         output_verilog(full_ast, file=f)
         miyao = "// K: " + k 
